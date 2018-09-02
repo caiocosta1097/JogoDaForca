@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -20,6 +21,9 @@ public class MainActivity extends Activity {
 
     // Declarando um ImageView
     ImageView imgForca;
+
+    // Declarando um MediaPlayer
+    MediaPlayer mediaPlayer;
 
     // Declarando um AlertDialog
     AlertDialog alerta;
@@ -223,11 +227,39 @@ public class MainActivity extends Activity {
         }
 
         // Exibindo na tela as letras escondidas da palavra
-        txtPalavra.setText(palavraEscondida.toString());
+         txtPalavra.setText(palavraEscondida.toString());
 
         // Exibindo a quantidade de letras na palavra
-        txtLetras.setText(palavraSorteada.length() + " letras");
+         txtLetras.setText(palavraSorteada.length() + " letras");
 
+        // Criando o MediaPLayer
+         mediaPlayer = MediaPlayer.create(this, R.raw.mission_impossible);
+
+         // Método para música não parar
+         mediaPlayer.setLooping(true);
+
+        // Iniciando a música
+         mediaPlayer.start();
+
+    }
+
+    // Método para pausar a música ao quando sair, porém não fechar o app
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Parar música
+        mediaPlayer.pause();
+    }
+
+    // Método para música voltar do mesmo lugar que parou ao pausar
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Verificar se a música está parada e começar a tocar de novo
+        if(!mediaPlayer.isPlaying())
+            mediaPlayer.start();
     }
 
     // Método que é chamado com o clique do botao DICA
@@ -477,6 +509,9 @@ public class MainActivity extends Activity {
 
         // Exibe o alert
         alerta.show();
+
+        // Parar a música quando finalizar o jogo
+        mediaPlayer.stop();
 
     }
 
