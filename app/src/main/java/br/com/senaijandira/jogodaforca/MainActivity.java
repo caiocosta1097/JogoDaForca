@@ -35,118 +35,22 @@ public class MainActivity extends Activity {
     Button btnA, btnB, btnC, btnD, btnE, btnF, btnG, btnH, btnI, btnJ, btnK, btnL, btnM, btnN, btnO, btnP, btnQ, btnR, btnS, btnT, btnU, btnV, btnW, btnX, btnY, btnZ, btnDica;
 
     // Vetor que recebe todas as palavras do jogo
-    String palavra[] = {
-            "Celta",
-            "Abacaxi",
-            "Cachorro",
-            "Corinthians",
-            "Salvador",
-            "Palio",
-            "Laranja",
-            "Cobra",
-            "Palmeiras",
-            "Campinas",
-            "Fiesta",
-            "Morango",
-            "Gato",
-            "Botafogo",
-            "Jandira",
-            "Civic",
-            "Uva",
-            "Cavalo",
-            "Flamengo",
-            "Fortaleza",
-            "Corolla",
-            "Banana",
-            "Vaca",
-            "Cruzeiro",
-            "Curitiba",
-            "Sandero",
-            "Goiaba",
-            "Tartaruga",
-            "Internacional",
-            "Natal",
-            "Hilux",
-            "Manga",
-            "Ovelha",
-            "Vasco",
-            "Osasco",
-            "Fox",
-            "Melancia",
-            "Macaco",
-            "Santos",
-            "Recife",
-            "Golf",
-            "Tangerina",
-            "Lobo",
-            "Bahia",
-            "Santos",
-            "Azera",
-            "Kiwi",
-            "Papagaio",
-            "Chapecoense",
-            "Guarulhos",
+    String palavra[][] = {
+            {"Celta", "Fiesta", "Civic", "Sandero", "Hilux", "Fox", "Corolla", "Golf", "Azera", "Palio"},
+            {"Abacaxi", "Laranja", "Uva", "Goiaba", "Morango", "Banana", "Manga", "Melancia", "Kiwi", "Tangerina"},
+            {"Cachorro", "Cobra", "Gato", "Vaca", "Tartaruga", "Ovelha", "Cavalo", "Macaco", "Papagaio", "Lobo"},
+            {"Corinthians", "Palmeiras", "Flamengo", "Cruzeiro", "Vasco", "Internacional", "Fluminense", "Chapecoense", "Botafogo", "Bahia"},
+            {"Salvador", "Campinas", "Jandira", "Fortaleza", "Curitiba", "Natal", "Osasco", "Recife", "Santos", "Guarulhos"}
     };
 
     // Vetor que recebe todas as dicas das palavras
-    String dica[] = {
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-            "Carro",
-            "Fruta",
-            "Animal",
-            "Time",
-            "Cidade",
-    };
+    String dica[] = {"Carro", "Fruta", "Animal", "Time", "Cidade"};
 
     // Declarando um Random
     Random random;
 
     // Declarando os int
-    int qtdPalavras, indiceSorteio, acertos, compararAcertos;
+    int qtdPalavras, indiceSorteio, qtdDicas, indiceDica, acertos, compararAcertos;
 
     // chancesRestantes vai sempre ser iniciada em 6
     int chancesRestantes = 6;
@@ -209,14 +113,20 @@ public class MainActivity extends Activity {
          // Criando um Random
         random = new Random();
 
-        // qtdPalavras recebe o tamanho do vetor
-        qtdPalavras = palavra.length;
+        // qtdDicas recebe o tamanho do vetor
+        qtdDicas = dica.length;
+
+        // indiceDica recebe um indice sorteado do vetor dicas
+        indiceDica = random.nextInt(qtdDicas);
+
+        // qtdPalavras recebe o tamanho das colunas da matriz
+        qtdPalavras = palavra[0].length;
 
         // indiceSorteio recebe um indice sorteado do vetor
         indiceSorteio = random.nextInt(qtdPalavras);
 
-        // palavraSorteada recebe a palavra referente ao indice sorteado e com todas as letras maiúsculas
-        palavraSorteada = palavra[indiceSorteio].toUpperCase();
+        // palavraSorteada recebe a palavra referente a linha com indiceDica, coluna com indiceSorteio e com todas as letras maiúsculas
+        palavraSorteada = palavra[indiceDica][indiceSorteio].toUpperCase();
 
         // Loop que conta até o tamanho da palavra sorteada
         for (int i = 0; i <palavraSorteada.length(); i++){
@@ -266,7 +176,7 @@ public class MainActivity extends Activity {
     public  void mostraDica (View view){
 
         // Exibindo a dica referente ao indice sorteado
-        txtDicas.setText("Dica: " + dica[indiceSorteio]);
+        txtDicas.setText("Dica: " + dica[indiceDica]);
 
         // Após o click, o botão fica verde e não será possível clicar de novo
         btnDica.setEnabled(false);
