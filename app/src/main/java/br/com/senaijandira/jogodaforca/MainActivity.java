@@ -268,9 +268,9 @@ public class MainActivity extends Activity {
         // Exibindo a dica referente ao indice sorteado
         txtDicas.setText("Dica: " + dica[indiceSorteio]);
 
-        // Após o click, o botão fica vermelho e não será possível clicar de novo
+        // Após o click, o botão fica verde e não será possível clicar de novo
         btnDica.setEnabled(false);
-        btnDica.setBackgroundResource(R.color.red);
+        btnDica.setBackgroundResource(R.color.verde);
 
     }
 
@@ -283,147 +283,6 @@ public class MainActivity extends Activity {
         // letra recebe o texto que está no botão clicado
         String letra = botao.getText().toString();
 
-
-        // Estrutura de decisão que pega o ID do botão
-        switch (botao.getId()){
-
-            //  Após o click, o botão fica vermelho e não será possível clicar de novo
-            case (R.id.btnA):
-                btnA.setEnabled(false);
-                btnA.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnB):
-                btnB.setEnabled(false);
-                btnB.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnC):
-                btnC.setEnabled(false);
-                btnC.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnD):
-                btnD.setEnabled(false);
-                btnD.setBackgroundResource(R.color.red);
-                break;
-
-
-            case (R.id.btnE):
-                btnE.setEnabled(false);
-                btnE.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnF):
-                btnF.setEnabled(false);
-                btnF.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnG):
-                btnG.setEnabled(false);
-                btnG.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnH):
-                btnH.setEnabled(false);
-                btnH.setBackgroundResource(R.color.red);
-                break;
-
-
-            case (R.id.btnI):
-                btnI.setEnabled(false);
-                btnI.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnJ):
-                btnJ.setEnabled(false);
-                btnJ.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnK):
-                btnK.setEnabled(false);
-                btnK.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnL):
-                btnL.setEnabled(false);
-                btnL.setBackgroundResource(R.color.red);
-                break;
-
-
-            case (R.id.btnM):
-                btnM.setEnabled(false);
-                btnM.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnN):
-                btnN.setEnabled(false);
-                btnN.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnO):
-                btnO.setEnabled(false);
-                btnO.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnP):
-                btnP.setEnabled(false);
-                btnP.setBackgroundResource(R.color.red);
-                break;
-
-
-            case (R.id.btnQ):
-                btnQ.setEnabled(false);
-                btnQ.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnR):
-                btnR.setEnabled(false);
-                btnR.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnS):
-                btnS.setEnabled(false);
-                btnS.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnT):
-                btnT.setEnabled(false);
-                btnT.setBackgroundResource(R.color.red);
-                break;
-
-
-            case (R.id.btnU):
-                btnU.setEnabled(false);
-                btnU.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnV):
-                btnV.setEnabled(false);
-                btnV.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnW):
-                btnW.setEnabled(false);
-                btnW.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnX):
-                btnX.setEnabled(false);
-                btnX.setBackgroundResource(R.color.red);
-                break;
-
-
-            case (R.id.btnY):
-                btnY.setEnabled(false);
-                btnY.setBackgroundResource(R.color.red);
-                break;
-
-            case (R.id.btnZ):
-                btnZ.setEnabled(false);
-                btnZ.setBackgroundResource(R.color.red);
-                break;
-        }
 
         // compararAcertos recebe acertos
         compararAcertos = acertos;
@@ -447,6 +306,17 @@ public class MainActivity extends Activity {
 
             // Se tiver, subtrai 1 das chances que restam
             chancesRestantes--;
+
+            // Deixar o botão vermelho se a letra estiver errada
+            botao.setEnabled(false);
+            botao.setBackgroundResource(R.color.red);
+
+        }
+        else {
+
+            // Deixar o botão verde se a letra estiver certa
+            botao.setEnabled(false);
+            botao.setBackgroundResource(R.color.verde);
 
         }
 
